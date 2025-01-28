@@ -1,9 +1,4 @@
-import axios from "axios";
-
-const fetchDogsApi = axios.create({
-  baseURL: "https://frontend-take-home-service.fetch.com",
-  withCredentials: true,
-});
+import fetchDogsApi from "./index";
 
 /***
  * Login the user with the given name and email.
