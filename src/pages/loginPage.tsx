@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { loginUser } from "../api/auth";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ const LoginPage: React.FC = () => {
     try {
       await loginUser(name, email);
       // Redirect to the Search Page on successful login
-      // navigate("/search");
+      navigate("/search");
     } catch (error: any) {
       setError(error.response?.data || error.message || "Login failed");
     }
