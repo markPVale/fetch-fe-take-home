@@ -22,30 +22,45 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="login-page">
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-      {error && <p className="error"></p>}
+    <div className="login-page flex items-center justify-center min-h-screen bg-blue-50">
+      <div className="text-center">
+        <h1 className="sm:text-3xl text-4xl font-semibold text-center mb-8">
+          Fetch Your New Best Friend
+        </h1>
+        <div className="w-full max-w-md sm:p-6 p-8 bg-white shadow-md rounded-lg mx-auto">
+          {/* <h2 className="text-2xl font-bold text-blue-600 text-center">Login</h2> */}
+          {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+          <form onSubmit={handleLogin} className="space-y-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Name:
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              />
+            </label>
+            <label className="block text-sm font-medium text-gray-700">
+              Email:
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              />
+            </label>
+            <button
+              type="submit"
+              className="sm:w-auto w-full px-4 py-2 font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
+            >
+              Log In
+            </button>
+          </form>
+          {error && <p className="mt-4 text-sm text-center text-red-500"></p>}
+        </div>
+      </div>
     </div>
   );
 };
