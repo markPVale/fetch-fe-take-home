@@ -1,30 +1,6 @@
 import fetchDogsApi from "./index";
-
-interface Location {
-  id: string;
-  name: string;
-  address: string;
-  city: string;
-  state: string;
-  zip_code: string;
-}
-
-interface Coordinates {
-  lat: number;
-  lon: number;
-}
-
-interface GeoBoundingBox {
-  top?: Coordinates;
-  left?: Coordinates;
-  bottom?: Coordinates;
-  right?: Coordinates;
-  bottom_left?: Coordinates;
-  top_right?: Coordinates;
-  bottom_right?: Coordinates;
-  top_left?: Coordinates;
-}
-
+import { Location } from "../interfaces/location";
+import { GeoBoundingBox } from "../interfaces/geoBoundingBox";
 /**
  * Fetch location details for a list of zip codes.
  *
@@ -37,11 +13,11 @@ export const fetchLocations = async (zipCodes: string[]): Promise<Location[]> =>
   }
 
   const response = await fetchDogsApi.post("/locations", zipCodes);
-  console.log("Raw API Response for fetchLocations:", response.data);
+  // console.log("API Response for fetchLocations:", response.data);
 
   const validLocations = response.data.filter((loc: Location | null) => loc !== null);
 
-  console.log("Filtered Locations (No Nulls):", validLocations);
+  // console.log("Filtered Locations (No null values):", validLocations);
 
   return validLocations;
 };

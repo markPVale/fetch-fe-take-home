@@ -31,7 +31,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   if (!isAuthenticated) {
     return (
       <Navigate
-        to="/login"
+        to="/"
         state={{ message: "Your session expired. Please log in again." }}
         replace
       />
