@@ -1,18 +1,6 @@
 import fetchDogsApi from "./index";
-
-interface Dog {
-  id: string;
-  img: string;
-  name: string;
-  age: number;
-  zip_code: string;
-  breed: string;
-}
-interface FetchDogsResponse {
-  next: string | null; // The next query string or null if no more pages
-  resultIds: string[]; // Array of dog IDs
-  total: number;       // Total number of results
-}
+import { Dog } from "../interfaces/dog";
+import { FetchDogsResponse } from "../interfaces/fetchDogsResponse";
 
 /**
  * Fetches a list of dogs based on the provided query parameters.

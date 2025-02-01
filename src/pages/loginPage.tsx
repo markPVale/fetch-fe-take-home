@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { loginUser } from "../api/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const message = location.state?.message || null;
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,8 +18,16 @@ const LoginPage: React.FC = () => {
       await loginUser(name, email);
       // Redirect to the Search Page on successful login
       navigate("/search");
-    } catch (error: any) {
-      setError(error.response?.data || error.message || "Login failed");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(
+          (error as { response?: { data: string } }).response?.data ||
+            error.message ||
+            "Login failed"
+        );
+      } else {
+        setError("Login failed");
+      }
     }
   };
 
@@ -28,7 +38,11 @@ const LoginPage: React.FC = () => {
           Fetch Your New Best Friend
         </h1>
         <div className="w-full max-w-md sm:p-6 p-8 bg-white shadow-md rounded-lg mx-auto">
-          {/* <h2 className="text-2xl font-bold text-blue-600 text-center">Login</h2> */}
+          {message && (
+            <div className="mb-4 p-3 bg-yellow-100 text-yellow-800 rounded-md">
+              {message}
+            </div>
+          )}
           {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
           <form onSubmit={handleLogin} className="space-y-4">
             <label className="block text-sm font-medium text-gray-700">

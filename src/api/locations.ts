@@ -37,7 +37,13 @@ export const fetchLocations = async (zipCodes: string[]): Promise<Location[]> =>
   }
 
   const response = await fetchDogsApi.post("/locations", zipCodes);
-  return response.data as Location[];
+  console.log("Raw API Response for fetchLocations:", response.data);
+
+  const validLocations = response.data.filter((loc: Location | null) => loc !== null);
+
+  console.log("Filtered Locations (No Nulls):", validLocations);
+
+  return validLocations;
 };
 
 /**
@@ -57,7 +63,7 @@ export const searchLocations = async (
   size: number = 25,
   from?: number
 ): Promise<{ results: Location[]; total: number }> => {
-  const body: Record<string, any> = { size };
+  const body: Partial<Location> & {size: number; from?: number; geoBoundingBox?: GeoBoundingBox; states?: string[]} = { size };
   if (city) body.city = city;
   if (states) body.states = states;
   if (geoBoundingBox) body.geoBoundingBox = geoBoundingBox;

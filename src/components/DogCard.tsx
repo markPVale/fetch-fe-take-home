@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 import { Dog } from "../interfaces/dog";
 import { Location } from "../interfaces/location";
 
@@ -18,15 +19,12 @@ const DogCard: React.FC<DogCardProps> = ({
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl">
       <div className="relative">
-        {/* Heart Icon for Favorite */}
-        <button
+        <Button
           onClick={() => toggleFavorite(dog.id)}
-          className={`absolute top-2 right-2 p-2 rounded-full text-white ${
-            isFavorite ? "bg-rose-300" : "bg-purple-300"
-          } hover:bg-red-400 transition`}
-        >
-          {isFavorite ? "❤️" : "🤍"}
-        </button>
+          label={isFavorite ? "Unfavorite" : "Favorite"}
+          variant={isFavorite ? "danger" : "secondary"}
+          fullWidth
+        />
         <img
           src={dog.img}
           alt={dog.name}
@@ -49,7 +47,7 @@ const DogCard: React.FC<DogCardProps> = ({
           className={`mt-3 w-full py-2 font-semibold rounded-md transition ${
             isFavorite
               ? "bg-rose-300 text-white hover:bg-red-400"
-              : "bg-purple-300 hover:bg-purple-400"
+              : "bg-blue-300 hover:bg-blue-400"
           }`}
         >
           {isFavorite ? "Unfavorite" : "Favorite"}
