@@ -20,8 +20,8 @@
 
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone https://github.com/YOUR_GITHUB_USERNAME/fetch-dog-adoption.git
-cd fetch-dog-adoption
+git clone git@github.com:markPVale/fetch-fe-take-home.git
+cd fetch-my-new-best-friend 
 ```
 
 ### **2️⃣ Install Dependencies**
@@ -29,17 +29,10 @@ cd fetch-dog-adoption
 npm install
 ```
 
-### **3️⃣ Set Up Environment Variables**
-Create a `.env` file in the root directory and add:
-```sh
-VITE_API_BASE_URL=https://frontend-take-home-service.fetch.com
-```
-
-### **4️⃣ Start the Development Server**
+### **3️⃣ Start the Development Server**
 ```sh
 npm run dev
 ```
-The app will be available at [http://localhost:5173](http://localhost:5173).
 
 ---
 
