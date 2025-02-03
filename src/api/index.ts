@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const fetchDogsApi = axios.create({
-  baseURL: "/api",
+  baseURL: import.meta.env.VITE_API_BASE_URL || "/api", // Default to Netlify proxy, fallback to direct API in local env
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
