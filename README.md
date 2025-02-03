@@ -80,6 +80,7 @@ This app interacts with the Fetch Rewards API for authentication and dog data.
 ---
 
 ## 🏗️ Future Enhancements
+💡 **Confirm Requirements For Login** - What parameters should the username/email inputs follow to conform to API.
 💡 **Custom Styles** - The app currently displays base-level styling.
 💡 **Improved Error Handling** - Display more user-friendly error messages.
 💡 **More Filtering Options** - Add filtering by age, location, etc.

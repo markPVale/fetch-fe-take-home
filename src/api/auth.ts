@@ -15,7 +15,10 @@ export const checkAuthStatus = async (): Promise<boolean> => {
     const response = await fetchDogsApi.get("/dogs/breeds"); // Fetch any resource that requires auth
     return response.status === 200; // If successful, the user is authenticated
   } catch (error: unknown) {
-    console.warn("Authentication check failed:", error instanceof Error ? error.message : "Unknown error");
+    console.warn(
+      "Authentication check failed:",
+      error instanceof Error ? error.message : "Unknown error"
+    );
     return false; // If an error occurs, the user is not authenticated
   }
 };
@@ -29,10 +32,12 @@ export const checkAuthStatus = async (): Promise<boolean> => {
  */
 export const loginUser = async (name: string, email: string): Promise<void> => {
   try {
-    const response = await fetchDogsApi.post("/auth/login", { name, email });
-    // console.log("Login successful", response.status);
+    await fetchDogsApi.post("/auth/login", { name, email });
   } catch (error: unknown) {
-    console.warn("Login failed:", error instanceof Error ? error.message : "Unknown error");
+    console.warn(
+      "Login failed:",
+      error instanceof Error ? error.message : "Unknown error"
+    );
   }
 };
 
@@ -47,6 +52,9 @@ export const logoutUser = async (): Promise<void> => {
     console.log("Logout successful", response.status);
   } catch (error: unknown) {
     // fallback to error.message if response.data is undefined (e.g. network error)
-    console.warn("Logout failed:", error instanceof Error ? error.message : "Unknown error");
+    console.warn(
+      "Logout failed:",
+      error instanceof Error ? error.message : "Unknown error"
+    );
   }
 };
