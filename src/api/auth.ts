@@ -30,7 +30,7 @@ export const checkAuthStatus = async (): Promise<boolean> => {
 export const loginUser = async (name: string, email: string): Promise<void> => {
   try {
     const response = await fetchDogsApi.post("/auth/login", { name, email });
-    console.log("Login successful", response.status);
+    // console.log("Login successful", response.status);
   } catch (error: unknown) {
     console.warn("Login failed:", error instanceof Error ? error.message : "Unknown error");
   }
