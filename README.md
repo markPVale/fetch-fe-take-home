@@ -80,6 +80,7 @@ This app interacts with the Fetch Rewards API for authentication and dog data.
 ---
 
 ## 🏗️ Future Enhancements
+💡 **Custom Styles** - The app currently displays base-level styling.
 💡 **Improved Error Handling** - Display more user-friendly error messages.
-💡 **Logout Functionality** - Implement a logout button for users.
 💡 **More Filtering Options** - Add filtering by age, location, etc.
+💡 **Add Robust Testing** - Add a robust test suite for each file.
